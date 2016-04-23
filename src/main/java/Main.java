@@ -24,17 +24,7 @@ public class Main {
     port(Integer.valueOf(System.getenv("PORT")));
     staticFileLocation("/public");
 
-    get("/hello", (req, res) -> {
-      try{
-        RelativisticModel.select();
-        String energy = System.getenv().get("ENERGY");
-        Amount<Mass> m = Amount.valueOf(energy).to(KILOGRAM);
-        return "E=mc^2: " + energy + " = " + m.toString();
-      }catch(Exception e){
-        return e.printStackTrace();
-      }
-      
-    });
+    get("/hello", (req, res) -> "Hello World!!");
 
     get("/", (request, response) -> {
             Map<String, Object> attributes = new HashMap<>();
