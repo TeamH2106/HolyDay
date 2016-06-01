@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -jar  target/helloworld-1.0-SNAPSHOT.jar
+web: java -Dserver.port=$PORT -jar  target/holyday-1.0-SNAPSHOT.jar
