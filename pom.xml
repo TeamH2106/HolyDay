@@ -61,7 +61,7 @@
             <debug>true</debug>
         </configuration>
       </plugin>
-      <plugin>
+      <!-- <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
@@ -92,7 +92,7 @@
             </configuration>
           </execution>
         </executions>
-      </plugin>
+      </plugin> -->
     </plugins>
     <properties>
     <!-- Java バージョン指定【追加】 -->
