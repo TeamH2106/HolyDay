@@ -18,7 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-// import com.heroku.sdk.jdbc.DatabaseUrl;
+import com.heroku.sdk.jdbc.DatabaseUrl;
 // import static javax.measure.unit.SI.KILOGRAM;
 // import javax.measure.quantity.Mass;
 // import org.jscience.physics.model.RelativisticModel;
@@ -26,16 +26,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @EnableAutoConfiguration
-public class Main {
+public class MainClass {
 
   @RequestMapping("/")
   @ResponseBody
   public String home() {
-        return "HELLO , HEROKU!!!! with Springboot" ;
+        return "HELLO , HEROKU!!!! with Springboot";
   }
 
   public static void main(String[] args) {
-    SpringApplication.run(Main.class, args);
+    SpringApplication.run(MainClass.class, args);
 
   //   port(Integer.valueOf(System.getenv("PORT")));
   //   staticFileLocation("/public");
