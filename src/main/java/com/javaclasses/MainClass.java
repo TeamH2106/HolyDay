@@ -31,7 +31,7 @@ public class MainClass {
   @RequestMapping("/")
   @ResponseBody
   public String home() {
-        return "HELLO , HEROKU!!!! with Springboot";
+        return "HELLO , HEROKU!!!! ";
   }
 
   public static void main(String[] args) {
