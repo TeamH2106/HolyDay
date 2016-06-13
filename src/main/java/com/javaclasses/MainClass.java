@@ -31,7 +31,7 @@ public class MainClass {
   @RequestMapping("/")
   @ResponseBody
   public String home() {
-        return "HELLO , HEROKU!!!! ";
+        return "HELLO,test,HEROKU!!!! ";
   }
 
   public static void main(String[] args) {
