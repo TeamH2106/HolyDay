@@ -27,5 +27,8 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="/Users/tweedledee/Downloads/force-wsc-37.0.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/tweedledee/Downloads/partner.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

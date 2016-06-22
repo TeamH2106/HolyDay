@@ -1,79 +1,60 @@
 package com.javaclasses;
 
-import java.sql.*;
-import java.util.HashMap;
-import java.util.ArrayList;
-import java.util.Map;
-
-import java.net.URI;
-import java.net.URISyntaxException;
-
-// import static spark.Spark.*;
-// import spark.template.freemarker.FreeMarkerEngine;
-// import spark.ModelAndView;
-// import static spark.Spark.get;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.heroku.sdk.jdbc.DatabaseUrl;
-// import static javax.measure.unit.SI.KILOGRAM;
-// import javax.measure.quantity.Mass;
-// import org.jscience.physics.model.RelativisticModel;
-// import org.jscience.physics.amount.Amount;
+import com.sforce.soap.partner.Connector;
+import com.sforce.soap.partner.PartnerConnection;
+import com.sforce.ws.ConnectorConfig;
+
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 @EnableAutoConfiguration
 public class MainClass {
-
+	static PartnerConnection connection;
   @RequestMapping("/")
   @ResponseBody
   public String home() {
-        return "HELLO,test,HEROKU!!!! ";
+        
+        final String USERNAME = "wendyjin0628@gmail.com";
+        final String PASSWORD = "hidetoshi7";
+        
+        ConnectorConfig config = new ConnectorConfig();
+
+        config.setUsername(USERNAME);
+        config.setPassword(PASSWORD);
+        //config.setTraceMessage(true);
+        try {
+
+           connection = Connector.newConnection(config);
+
+          // display some current settings
+          System.out.println("Auth EndPoint: "+config.getAuthEndpoint());
+          System.out.println("Service EndPoint: "+config.getServiceEndpoint());
+          System.out.println("Username: "+config.getUsername());
+          System.out.println("SessionId: "+config.getSessionId());
+        }
+        catch(Exception e){
+        	e.printStackTrace();
+        }
+        
+        return "hometest_w ";
+  }
+  
+  @RequestMapping("/hello")
+  public String hello(@RequestParam(value="name", required=false, defaultValue="World") String name, Model model) {
+      model.addAttribute("name", name);
+      return "hello";
   }
 
   public static void main(String[] args) {
     SpringApplication.run(MainClass.class, args);
-
-  //   port(Integer.valueOf(System.getenv("PORT")));
-  //   staticFileLocation("/public");
-
-  //   get("/hello", (req, res) -> "Hello World!!");
-
-  //   get("/", (request, response) -> {
-  //           Map<String, Object> attributes = new HashMap<>();
-  //           attributes.put("message", "Hello World!");
-
-            // return new ModelAndView(attributes, "hometest_w.html");
-  //       }, new FreeMarkerEngine());
-
-  //   get("/db", (req, res) -> {
-  //     Connection connection = null;
-  //     Map<String, Object> attributes = new HashMap<>();
-  //     try {
-  //       connection = DatabaseUrl.extract().getConnection();
-
-  //       Statement stmt = connection.createStatement();
-  //       stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
-  //       stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
-  //       ResultSet rs = stmt.executeQuery("SELECT tick FROM ticks");
-
-  //       ArrayList<String> output = new ArrayList<String>();
-  //       while (rs.next()) {
-  //         output.add( "Read from DB: " + rs.getTimestamp("tick"));
-  //       }
-
-  //       attributes.put("results", output);
-  //       return new ModelAndView(attributes, "db.ftl");
-  //     } catch (Exception e) {
-  //       attributes.put("message", "There was an error: " + e);
-  //       return new ModelAndView(attributes, "error.ftl");
-  //     } finally {
-  //       if (connection != null) try{connection.close();} catch(SQLException e){}
-  //     }
-  //   }, new FreeMarkerEngine());
 
   }
 
